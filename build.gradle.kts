@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
     kotlin("jvm") version "2.0.21"
     id("com.gradleup.shadow") version "8.3.0"
@@ -27,12 +29,6 @@ dependencies {
     implementation("org.reflections:reflections:0.10.2")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.10") // Kotlin reflection
 
-    // Imperat Library (Commands)
-    implementation("dev.velix:imperat-core:1.5.1")
-    implementation("dev.velix:imperat-bukkit:1.5.1")
-    implementation("dev.velix:imperat-minestom:1.5.1")
-
-
     // SLF4J for logging
     implementation("org.slf4j:slf4j-simple:2.0.14")
 
@@ -44,6 +40,9 @@ dependencies {
     // Atlas Projectiles
     implementation("ca.atlasengine:atlas-projectiles:2.1.1")
 
+    // Lamp Command Framework (https://foxhut.gitbook.io/lamp-docs)
+    implementation("io.github.revxrsal:lamp.common:4.0.0-rc.4")
+    implementation("io.github.revxrsal:lamp.minestom:4.0.0-rc.4")
 
 
 
@@ -53,6 +52,21 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
+    compilerOptions {
+        javaParameters = true
+    }
     jvmToolchain(21)
 }
 
+
+tasks.withType<JavaCompile> {
+    // Preserve parameter names in the bytecode
+    options.compilerArgs.add("-parameters")
+}
+
+// optional: if you're using Kotlin
+tasks.withType<KotlinJvmCompile> {
+    compilerOptions {
+        javaParameters = true
+    }
+}

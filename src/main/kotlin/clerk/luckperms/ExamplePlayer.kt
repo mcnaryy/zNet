@@ -1,4 +1,4 @@
-package net.hellz.luckperms
+package net.hellz.clerk.luckperms
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage

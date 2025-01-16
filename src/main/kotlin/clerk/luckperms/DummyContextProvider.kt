@@ -1,4 +1,4 @@
-package net.hellz.luckperms
+package net.hellz.clerk.luckperms
 
 import me.lucko.luckperms.minestom.context.ContextProvider
 import net.minestom.server.entity.Player

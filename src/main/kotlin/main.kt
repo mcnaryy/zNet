@@ -1,13 +1,11 @@
 package net.hellz
 
-
 import ca.atlasengine.projectiles.BowModule
 import ca.atlasengine.projectiles.entities.ArrowProjectile
 import ca.atlasengine.projectiles.entities.FollowProjectile
 import me.lucko.luckperms.common.config.generic.adapter.EnvironmentVariableConfigAdapter
 import me.lucko.luckperms.minestom.CommandRegistry
 import me.lucko.luckperms.minestom.LuckPermsMinestom
-import net.hellz.commands.CommandRegistrar
 import net.minestom.server.MinecraftServer
 import net.minestom.server.coordinate.Pos
 import net.minestom.server.event.player.AsyncPlayerConfigurationEvent
@@ -17,13 +15,15 @@ import net.worldseed.multipart.ModelEngine
 import java.nio.file.Path
 import me.lucko.luckperms.common.config.generic.adapter.MultiConfigurationAdapter
 import me.lucko.luckperms.minestom.LPMinestomPlugin
-import net.hellz.luckperms.DummyContextProvider
-import net.hellz.luckperms.ExamplePlayer
-import net.hellz.luckperms.HoconConfigurationAdapter
+import net.hellz.clerk.luckperms.DummyContextProvider
+import net.hellz.clerk.luckperms.ExamplePlayer
+import net.hellz.clerk.luckperms.HoconConfigurationAdapter
+import net.hellz.commands.*
 import net.hellz.events.BlockBreakEvent
 import net.hellz.events.PlayerDropEvent
 import net.hellz.events.PlayerPickupEvent
 import net.hellz.movetek.stamina.SprintDetection
+import net.kyori.adventure.nbt.BinaryTag
 import net.kyori.adventure.text.Component
 import net.luckperms.api.context.DefaultContextKeys
 import net.luckperms.api.context.ImmutableContextSet
@@ -45,6 +45,8 @@ import net.minestom.server.item.Material
 import net.minestom.server.network.player.GameProfile
 import net.minestom.server.network.player.PlayerConnection
 import net.minestom.server.utils.chunk.ChunkSupplier
+import revxrsal.commands.minestom.MinestomLamp
+
 
 /**
  * Main entry point for the Minestom server.
@@ -188,12 +190,19 @@ fun main() {
     commandManager.register(command)
 
 
-    // Register other commands
-    CommandRegistrar.registerCommands()
 
     // Enables online mode, adds skins, etc.
     MojangAuth.init()
 
     // Start the server
     minecraftServer.start("0.0.0.0", 25565)
+
+    // Lamp Command Framework
+    val lamp = MinestomLamp.builder().build()
+
+    // Register Lamp Commands
+    lamp.register(GreetCommands())
+    lamp.register(VersionCommand())
+    lamp.register(TeleportCommand())
+    lamp.register(LatencyCommand())
 }

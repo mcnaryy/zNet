@@ -1,4 +1,4 @@
-package net.hellz.luckperms
+package net.hellz.clerk.luckperms
 
 import me.lucko.luckperms.common.config.generic.adapter.ConfigurateConfigAdapter
 import me.lucko.luckperms.common.config.generic.adapter.ConfigurationAdapter
