@@ -20,10 +20,7 @@ zNet is built to deliver a seamless and optimized gameplay experience for player
 
 To accelerate development, zNet uses the following libraries:  
 
-- **[WorldSeedEntityEngine](https://github.com/username/WorldSeedEntityEngine)**: Efficient entity handling and management.  
-- **[Atlas Projectiles](https://github.com/username/AtlasProjectiles)**: Advanced projectile mechanics for engaging combat.  
-- **[LuckPerms](https://luckperms.net/)**: Robust role and permissions management.  
-
-## Installation  
-
-> **Note:** This project is not yet ready for public use or deployment.  
+- **[WorldSeedEntityEngine](https://github.com/AtlasEngineCa/WorldSeedEntityEngine)**: Bedrock models in vanilla Minecraft
+- **[Atlas Projectiles](https://github.com/AtlasEngineCa/AtlasProjectiles)**: A collection of projectile implementations for minestom 
+- **[LuckPerms](https://github.com/LooFifteen/LuckPerms/tree/feat/minestom)**: Minestom port of Lucko's LuckPerms.
+- **[Lamp](https://github.com/Revxrsal/Lamp)**: A modern annotations-driven commands framework for Java and Kotlin
