@@ -2,7 +2,6 @@ package net.hellz.commands
 
 import net.hellz.clerk.luckperms.ExamplePlayer
 import revxrsal.commands.annotation.Command
-import revxrsal.commands.minestom.actor.MinestomCommandActor
 import net.minestom.server.entity.Player
 import revxrsal.commands.annotation.Optional
 
@@ -28,6 +27,5 @@ class LatencyCommand {
             val ping = sender.getLatency()
             sender.sendMessage("Latency: ${ping}ms")
         }
-
     }
 }

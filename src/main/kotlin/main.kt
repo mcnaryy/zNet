@@ -22,6 +22,8 @@ import net.hellz.commands.*
 import net.hellz.events.BlockBreakEvent
 import net.hellz.events.PlayerDropEvent
 import net.hellz.events.PlayerPickupEvent
+import net.hellz.movetek.dive.DiveInitiator
+import net.hellz.movetek.prone.ProneManager
 import net.hellz.movetek.stamina.SprintDetection
 import net.kyori.adventure.nbt.BinaryTag
 import net.kyori.adventure.text.Component
@@ -64,6 +66,8 @@ fun main() {
     PlayerDropEvent
 
     SprintDetection
+    ProneManager
+    DiveInitiator
 
     // Create the instance
     val instanceManager = MinecraftServer.getInstanceManager()
