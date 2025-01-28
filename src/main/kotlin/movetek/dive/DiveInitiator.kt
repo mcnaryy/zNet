@@ -1,6 +1,7 @@
 package net.hellz.movetek.dive
 
 import net.hellz.movetek.prone.ProneManager
+import net.hellz.movetek.prone.ProneManager.initiateProne
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.minestom.server.MinecraftServer
@@ -28,7 +29,6 @@ object DiveInitiator {
 
                 if (player.isSprinting) {
                     if (!player.isOnGround) {
-                        player.sendMessage(Component.text("You are now in a prone position!", NamedTextColor.GOLD))
                         initiateDive(player)
                     }
                 }
@@ -66,9 +66,7 @@ object DiveInitiator {
                 val downwardPull = -2.5  // Negative vertical speed to simulate gravity pulling the player down
                 player.velocity = Vec(player.velocity.x, downwardPull, player.velocity.z)
             } else {
-                ProneManager.isProne = true
-                ProneManager.manageBarrierAbovePlayer(player)
-                ProneManager.forceSwimmingPose(player)
+                initiateProne(player)
                 task?.cancel()
             }
         }.repeat(TaskSchedule.tick(1)).schedule()

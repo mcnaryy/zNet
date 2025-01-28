@@ -3,6 +3,7 @@ package net.hellz.movetek.stamina
 import net.minestom.server.MinecraftServer
 import net.minestom.server.entity.Player
 import net.minestom.server.entity.EntityPose
+import net.minestom.server.entity.GameMode
 import net.minestom.server.utils.time.TimeUnit
 
 object SprintDetection {
@@ -12,6 +13,9 @@ object SprintDetection {
     init {
         MinecraftServer.getSchedulerManager().buildTask {
             for (player in MinecraftServer.getConnectionManager().onlinePlayers){
+                if (player.gameMode == GameMode.CREATIVE) {
+                    continue
+                }
                 if (player.isSprinting) {
                     // Decrease food when sprinting
                     if (player.food > 0){

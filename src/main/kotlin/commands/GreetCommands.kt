@@ -1,6 +1,6 @@
 package net.hellz.commands
 
-import net.hellz.clerk.luckperms.ExamplePlayer
+import net.hellz.clerk.PlayerProfile
 import net.minestom.server.entity.Player
 import revxrsal.commands.annotation.Command
 import revxrsal.commands.annotation.Description
@@ -15,8 +15,8 @@ class GreetCommands {
         actor: MinestomCommandActor,
         @Optional target: Player? = null
     ) {
-        // Ensure the actor is an ExamplePlayer
-        val executingPlayer = actor.asPlayer() as? ExamplePlayer ?: run {
+        // Ensure the actor is an PlayerProfile
+        val executingPlayer = actor.asPlayer() as? PlayerProfile ?: run {
             actor.reply("This command can only be used by players.")
             return
         }
